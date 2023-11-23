@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Sleep Tracker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sleep Tracker</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+
+  <!-- <ion-datetime class = "sleepStart" [showDefaultButtons]="true" [(ngModel)]="sleepStart"
+  (ionChange)="handleSleepStartTime($event)">
+    <span slot="title">Select a Sleep Start Time</span>
+  </ion-datetime>
+
+  <hr>
+  <hr>
+
+  <ion-datetime class = "sleepEnd" [showDefaultButtons]="true" [(ngModel)]="sleepStart"
+  (ionChange)="handleSleepStartTime($event)">
+    <span slot="title">Select a Sleep End Time</span>
+  </ion-datetime> -->
+
+  <!-- Ionic datetime picker for sleep start time -->
+    <ion-item>
+      <ion-label>Sleep Start Time</ion-label>
+      <ion-datetime
+        display-format="h:mm A"
+        picker-format="h:mm A"
+        [(ngModel)]="sleepStart"
+        (ionChange)="handleSleepStartTime($event)"
+      ></ion-datetime>
+    </ion-item>
+  
+    <!-- Ionic datetime picker for sleep end time -->
+    <ion-item>
+      <ion-label>Sleep End Time</ion-label>
+      <ion-datetime
+        display-format="h:mm A"
+        picker-format="h:mm A"
+        [(ngModel)]="sleepEnd"
+        (ionChange)="handleSleepEndTime($event)"
+      ></ion-datetime>
+    </ion-item>
+
+  <!-- Button to log sleep data -->
+  <ion-button (click)="logSleepData()">Log Sleep Data</ion-button>
+
+  <!-- Display all sleep data (replace with your desired UI) -->
+  <ion-list>
+    <ion-item *ngFor="let sleepEntry of allSleepData">
+      {{ sleepEntry.summaryString() }}
+    </ion-item>
+  </ion-list>
+
+</ion-content>

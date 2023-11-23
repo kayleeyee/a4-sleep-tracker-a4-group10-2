@@ -1,0 +1,7 @@
+{
+  "name": "a4-sleep-tracker-a4-group10-2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
