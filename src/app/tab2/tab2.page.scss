@@ -1,0 +1,28 @@
+p{
+//     line-height: normal;
+//     display: inline-block;
+//     vertical-align: middle;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.range{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.tick-label {
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: -20px; /* Adjust the vertical position as needed */
+}
+
+h1{
+    text-align: center;
+}
+
+ion-button{
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%
+}

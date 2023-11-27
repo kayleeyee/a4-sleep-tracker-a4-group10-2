@@ -19,7 +19,7 @@ export class Tab1Page {
     const currentDate = new Date().toISOString();
     this.sleepStart = currentDate;
     this.sleepEnd = currentDate;
-    console.log(this.allSleepData);
+    console.log(this.allOvernightData);
   }
 
   // getCurrentDateInPST(): string {
@@ -38,8 +38,8 @@ export class Tab1Page {
   // }
 
   /* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
-  get allSleepData() {
-    return SleepService.AllSleepData;
+  get allOvernightData() {
+    return SleepService.AllOvernightData;
   }
 
   // Function to handle the selection of sleep start time
@@ -58,6 +58,7 @@ export class Tab1Page {
     // Convert the string representations to Date objects
     const sleepStart = new Date(this.sleepStart);
     const sleepEnd = new Date(this.sleepEnd);
+
     console.log(sleepStart)
     console.log(sleepEnd)
     // Create an instance of OvernightSleepData with selected times

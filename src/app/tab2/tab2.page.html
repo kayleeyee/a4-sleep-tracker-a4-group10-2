@@ -14,4 +14,32 @@
   </ion-header>
 
   <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+
+<h1>Standard Sleepiness Scale: {{selectedValue}}</h1>
+  
+<ion-range class = "range" aria-label="Range with ticks" [ticks]="true" [snaps]="true" [min]="0" 
+  [max]="7"  (ionChange)="onSelectionChange($event)" [(ngModel)]="selectedValue"></ion-range>
+
+
+
+
+<div class = "scale">
+  <p>1: Feeling active, vital, alert, or wide awake</p>
+  <p>2: Functioning at high levels, but not at peak; able to concentrate</p>
+  <p>3: Awake, but relaxed; responsive but not fully alert</p>
+  <p>4: Somewhat foggy, let down</p>
+  <p>5: Foggy; losing interest in remaining awake; slowed down</p>
+  <p>6: Sleepy, woozy, fighting sleep; prefer to lie down</p>
+  <p>7: No longer fighting sleep, sleep onset soon; having dream-like thoughts</p>
+</div>
+
+<ion-button (click)="logSleepiness()">Log Sleepiness</ion-button>
+
+
+<ion-list>
+  <ion-item *ngFor="let sleepEntry of allSleepinessData">
+    {{ sleepEntry.summaryString() }}
+  </ion-item>
+</ion-list>
+
 </ion-content>
