@@ -3,6 +3,7 @@ import { SleepService } from 'src/services/sleep.service';
 import { SleepData } from 'src/data/sleep-data';
 import { OvernightSleepData } from 'src/data/overnight-sleep-data';
 import { StanfordSleepinessData } from 'src/data/stanford-sleepiness-data';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-tab1',
@@ -66,5 +67,14 @@ export class Tab1Page {
 
     // Log the sleep data using your sleep service or any desired logic
     this.sleepService.logOvernightData(overnightSleepData);
+
+    const setName = async () => {
+      await Preferences.set({
+        key: overnightSleepData.id,
+        value: JSON.stringify(overnightSleepData),
+      });
+    };
+    console.log(JSON.stringify(overnightSleepData))
   }
+  
 }
