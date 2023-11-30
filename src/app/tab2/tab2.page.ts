@@ -10,7 +10,7 @@ import { Storage } from '@capacitor/storage';
 })
 export class Tab2Page {
   selectedValue:number = 0;
-  constructor(public sleepService: SleepService) {}
+  constructor(public sleepService: SleepService, public storage: Storage) {}
 
   options = [
     { value: 'option1', label: 'Option 1' },
@@ -25,7 +25,9 @@ export class Tab2Page {
   }
 
   get allSleepinessData() {
-    return SleepService.AllSleepinessData;
+    // return SleepService.AllSleepinessData;
+    return SleepService.AllSleepData.sort((a, b) => (new Date(b.loggedAt)).getTime() - (new Date(a.loggedAt)).getTime());
+
   }
 
   logSleepiness() {
@@ -37,38 +39,49 @@ export class Tab2Page {
 
     const standfordSleepinessData = new StanfordSleepinessData(this.selectedValue, currentDate);
     this.sleepService.logSleepinessData(standfordSleepinessData);
+   
+    this.setName(standfordSleepinessData) 
 
-    // const setName = async () => {
-    //   await Preferences.set({
-    //     key: standfordSleepinessData.id,
-    //     value: JSON.stringify(standfordSleepinessData),
-    //   });
-    // };
-    const setName = async () => {
-      await Storage.set({
-        key: 'name',
-        value: 'Max',
-      });
-    };
-    // console.log(standfordSleepinessData.id);
-    // console.log(JSON.stringify(standfordSleepinessData));
+    console.log(standfordSleepinessData.id);
+    console.log(JSON.stringify(standfordSleepinessData));
 
-    this.loadData();
+    // this.loadData();
   }
 
+  setName(standfordSleepinessData:StanfordSleepinessData) {
+    Storage.set({
+      key: standfordSleepinessData.id,
+      value: JSON.stringify(standfordSleepinessData),
+    });
+  };
+
+  // async loadData() {
+  //   const keys = await Storage.keys();
+  //   console.log(keys.keys);
+  //     for (const key in keys) {
+  //       // Access the value for each key
+  //       const value = await Storage.get({ key: key });
+  //       console.log('key value!!!')
+  //       console.log(key)
+  //       console.log(value)
+  //       // console.log(`Key: ${key}, Value: ${JSON.parse(value.value)}`);
+  //     }
+  // }
   async loadData() {
     const keys = await Storage.keys();
     console.log(keys.keys);
-      for (const key in keys) {
+  
+    for (const key in keys.keys) {
+      if (keys.keys.hasOwnProperty(key)) {
         // Access the value for each key
-        const value = await Storage.get({ key: key });
+        const value = await Storage.get({ key: keys.keys[key] });
         console.log('key value!!!')
-        console.log(key)
+        console.log(keys.keys[key]);
         console.log(value)
         // console.log(`Key: ${key}, Value: ${JSON.parse(value.value)}`);
       }
-  }
-
+    }
+  }  
 }
 
 

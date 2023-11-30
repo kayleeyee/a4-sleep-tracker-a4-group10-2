@@ -3,7 +3,7 @@ import { SleepService } from 'src/services/sleep.service';
 import { SleepData } from 'src/data/sleep-data';
 import { OvernightSleepData } from 'src/data/overnight-sleep-data';
 import { StanfordSleepinessData } from 'src/data/stanford-sleepiness-data';
-import { Preferences } from '@capacitor/preferences';
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-tab1',
@@ -13,7 +13,7 @@ import { Preferences } from '@capacitor/preferences';
 export class Tab1Page {
   sleepStart: string = ''; // Variable to store sleep start time
   sleepEnd: string = '';   // Variable to store sleep end time
-
+  allSleepData = SleepService.AllOvernightData;
   constructor(public sleepService: SleepService) {}
 
   ngOnInit() {
@@ -40,7 +40,8 @@ export class Tab1Page {
 
   /* Ionic doesn't allow bindings to static variables, so this getter can be used instead. */
   get allOvernightData() {
-    return SleepService.AllOvernightData;
+    // return SleepService.AllOvernightData;
+    return SleepService.AllSleepData.sort((a, b) => (new Date(b.loggedAt)).getTime() - (new Date(a.loggedAt)).getTime());
   }
 
   // Function to handle the selection of sleep start time
@@ -68,13 +69,27 @@ export class Tab1Page {
     // Log the sleep data using your sleep service or any desired logic
     this.sleepService.logOvernightData(overnightSleepData);
 
-    const setName = async () => {
-      await Preferences.set({
-        key: overnightSleepData.id,
-        value: JSON.stringify(overnightSleepData),
-      });
-    };
-    console.log(JSON.stringify(overnightSleepData))
+    this.setName(overnightSleepData) 
+
+    // this.loadData();
   }
+
+  setName(overnightSleepData:OvernightSleepData) {
+    Storage.set({
+      key: overnightSleepData.id,
+      value: JSON.stringify(overnightSleepData),
+    });
+  };
   
+  async loadData() {
+    const keys = await Storage.keys();
+    console.log(keys.keys);
+  
+    for (const key in keys.keys) {
+      if (keys.keys.hasOwnProperty(key)) {
+        // Access the value for each key
+        const value = await Storage.get({ key: keys.keys[key] });
+      }
+    }
+  }  
 }

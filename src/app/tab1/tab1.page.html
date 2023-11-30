@@ -29,8 +29,9 @@
   </ion-datetime> -->
 
   <!-- Ionic datetime picker for sleep start time -->
+    <ion-label class="sleepStartTime">Sleep Start Time</ion-label>
     <ion-item>
-      <ion-label>Sleep Start Time</ion-label>
+      <!-- <ion-label>Sleep Start Time</ion-label> -->
       <ion-datetime
         display-format="h:mm A"
         picker-format="h:mm A"
@@ -38,10 +39,12 @@
         (ionChange)="handleSleepStartTime($event)"
       ></ion-datetime>
     </ion-item>
-  
+    <br>
+    <br>
     <!-- Ionic datetime picker for sleep end time -->
+    <ion-label class="sleepEndTime">Sleep End Time</ion-label>
     <ion-item>
-      <ion-label>Sleep End Time</ion-label>
+      <!-- <ion-label>Sleep End Time</ion-label> -->
       <ion-datetime
         display-format="h:mm A"
         picker-format="h:mm A"
@@ -53,11 +56,18 @@
   <!-- Button to log sleep data -->
   <ion-button (click)="logSleepData()">Log Sleep Data</ion-button>
 
+  <!-- <ion-label class="justLogged">Just Logged</ion-label> -->
   <!-- Display all sleep data (replace with your desired UI) -->
-  <ion-list>
-    <ion-item *ngFor="let sleepEntry of allOvernightData">
-      {{ sleepEntry.summaryString() }}
-    </ion-item>
-  </ion-list>
+  <!-- <ion-list class="recentLog"> -->
+    <!-- <ion-item *ngFor="let sleepEntry of allOvernightData"> -->
+      <!-- {{ allSleepData[0].summaryString() }} -->
+    <!-- </ion-item> -->
+  <!-- </ion-list> -->
 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </ion-content>

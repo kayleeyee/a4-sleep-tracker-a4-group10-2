@@ -14,10 +14,10 @@
   </ion-header>
 
   <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
-
+  <!-- <ion-button (click)="clearSleepData()">Clear All Sleep Data</ion-button> -->
   <ion-list>
     <ion-item *ngFor="let sleepEntry of allSleepData">
-      {{ sleepEntry.summaryString() }}
+      {{ sleepEntry.dateString() }} - {{ sleepEntry.summaryString() }}
     </ion-item>
   </ion-list>
 </ion-content>
