@@ -43,23 +43,23 @@
 
 
 8. How can a person log overnight sleep in your app? Why did you choose to support logging overnight sleep in this way?
-   A person can log their overnight sleep on the "Log Overnight Sleep" tab. They select the date from a calendar 
-   display. We chose to display the whole month because sometimes people don't know what day it is, so it helps to 
-   look at a calendar. This also gives them the ability to log their sleep from prior nights if they forgot to log 
-   it before. They select the time using a wheel style time picker, which is easy and intuitive to use.
+   A person can log their overnight sleep on the "Log Overnight Sleep" tab by selecting the date from a calendar 
+   display and the time using a wheel style time picker, which is easy and intuitive to use. We chose to display the whole 
+   month because sometimes it helps to look at a calendar if users do not know the current date and it also gives them the 
+   ability to log their sleep from prior nights if they forgot to log it before.
 
 9. How can a person log sleepiness during the day in your app? Why did you choose to support logging sleepiness in this way?
-   A person can log their sleepiness during the day on the "Log Sleepiness" tab, using the range slider. There are 7 tick 
+   A person can log their sleepiness during the day on the "Log Sleepiness" tab, using the range slider which has 7 tick 
    marks that correspond to the 7 levels on the Stanford Sleepiness Scale. Above the slider, the number selected using the 
    slider is displayed. Below the slider, we list each of the descriptions for each number 1-7. We chose to support logging 
-   sleepiness in this way because it's simple and easy to use.
+   sleepiness in this way because it's simple and allows the user to know what their choice means at all times.
 
 10. How can a person view the data they logged in your app? Why did you choose to support viewing logged data in this way?
     A person can view the data they logged in our app under the "Sleep Data" tab. Within this tab, all of the person's data,
-    including both logged overnight sleep and logged sleepiness during the day can be seen, with the most recent entrys at 
+    including both logged overnight sleep and logged sleepiness during the day can be seen with the most recent entries at 
     the top. We chose to support viewing logged data in this way so that the user can see all their data in one centralized
     place. They don't have to scroll all the way to the bottom of the page to see their most recent entries since the data 
-    is display chronologically with the latest entry at the top.
+    is displayed chronologically with the latest entry at the top.
 
 
 11. Which feature choose--using a native device resource, backing up logged data, or both?
@@ -77,6 +77,7 @@
 
 14. How does your app implement or follow principles of good mobile design?
     Our app has big buttons which are easy to find and click. Our app also has a desriptive menu bar at the bottom, which is similar 
-    to many other mobile applications, so it is intuitive for the user to use. A user can confirm that their sleep data was entered
-    by clicking the "Sleep Data" tab and their most recent data entry will be at the top with the other ones listed below it. There
-    are lines between each sleep data entry on the Sleep Data page which help with readability. 
+    to many other mobile applications, so it is intuitive for the user to navigate while also keeping different functionalities of the app 
+    in separate places. A user can confirm that their sleep data was entered by clicking the "Sleep Data" tab and their most recent data entry 
+    will be at the top with the other ones listed below it. There are lines between each sleep data entry on the Sleep Data page which help with
+    readability and separating each logged entry. 
